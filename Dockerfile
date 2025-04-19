@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose le port (optionnel ici, utile pour info)
-EXPOSE 8001
+EXPOSE 3000
 
 # Commande pour démarrer le serveur
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:3000"]
