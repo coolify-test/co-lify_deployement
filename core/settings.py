@@ -71,15 +71,6 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-siqce7e*%*426p$)2hxgk
 DEBUG = config('DEBUG', default=True, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=lambda x: [i.strip() for i in x.split(',')])
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': config('DB_ENGINE'),
-#         'NAME': config('DB_NAME'),
-#         'HOST': config('DB_HOST'),
-#         'USER': config('DB_USER'),
-#         'PASSWORD':config('DB_PASSWORD'),
-#     },
-# }
 
 DATABASES = {
     'default': {
