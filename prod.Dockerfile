@@ -8,7 +8,8 @@ WORKDIR /code
 
 COPY ./requirements.txt ./requirements/
 
-RUN pip install --upgrade pip &&  \
+
+RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 COPY entrypoint.prod.sh .
