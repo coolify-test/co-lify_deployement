@@ -7,4 +7,4 @@ python manage.py migrate
 echo "Collection statics"
 echo 'yes' | python manage.py collectstatic --noinput
 sleep 5
-gunicorn ARCEDIG.wsgi:application -b 0:8000 -w "${GUNICORN_WORKERS}" --log-level DEBUG --reload --threads=10 --timeout=3600
+gunicorn core.wsgi:application -b 0:8000 -w "${GUNICORN_WORKERS}" --log-level DEBUG --reload --threads=10 --timeout=3600
