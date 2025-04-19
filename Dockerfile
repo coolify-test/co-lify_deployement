@@ -1,11 +1,18 @@
-FROM python:3.9
-RUN apt-get update
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV APP_HOME /deploiement-vps
-RUN mkdir -p $APP_HOME
-WORKDIR $APP_HOME
-COPY requirements.txt $APP_HOME
-RUN python -m pip install --upgrade pip
-RUN pip install -r requirements.txt
-COPY . $APP_HOME
+# Utilise l'image Python officielle
+FROM python:3.11-slim
+
+# Définir le répertoire de travail
+WORKDIR /app
+
+# Copier les fichiers
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copier le reste du projet
+COPY . .
+
+# Expose le port (optionnel ici, utile pour info)
+EXPOSE 8000
+
+# Commande pour démarrer le serveur
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
