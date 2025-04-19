@@ -1,6 +1,5 @@
 Django
 gunicorn==23.0.0
-mysqlclient==2.2.4
 packaging==24.2
 PyMySQL==1.1.1
 python-decouple==3.8
