@@ -10,7 +10,7 @@ COPY ./requirements/common.txt ./requirements/
 COPY ./requirements/prod.txt ./requirements/
 
 RUN pip install --upgrade pip &&  \
-    pip install -r requirements/prod.txt
+    pip install -r requirements.txt
 
 COPY entrypoint.prod.sh .
 USER root
