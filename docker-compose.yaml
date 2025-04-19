@@ -1,21 +1,21 @@
-version: "3.9"
-
+version: '3'
 services:
-  webapp:
-    build:
-      dockerfile: prod.Dockerfile
-    image: webapp
-    restart: unless-stopped
-    command: gunicorn --workers=3 website.wsgi:application --bind 0.0.0.0:8001
-    expose:
-      - 8001
+  web:
+    restart: always
+    build: .
+    command: "sh run.sh"
     ports:
-      - "8001:8001"
+      - "8000:8000"
     volumes:
-      - static_volume:/code/src/staticfiles
-      - media_volume:/code/src/mediafiles
-      - /data/coolify/proxy/dynamic:/code/src/dynamic
+      - .:/deploiement-vps
+    env_file:
+      - ".env"
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
 
-volumes:
-  static_volume:
-  media_volume:
